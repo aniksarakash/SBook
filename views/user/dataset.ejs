@@ -1,0 +1,37 @@
+<%- include("./partials-user/header.ejs") %> 
+
+<body class="dataset_body">
+    <!-- included main navigation bar-->
+    <%- include("./partials-user/navbarMain.ejs") %> 
+
+
+    <div class="dataset_main">
+        <h2>Datasets</h2>
+        <hr>
+        <h3>Explore, analyze, and share quality data. Learn more about data types, creating, and collaborating.</h3>
+        <br>
+
+        <a href="/datasets/add"><button class="ui inverted secondary button">Add New Dataset</button></a>
+        <br><br>
+        <p>Pick your preferable datasets</p>
+
+        <div class="dataset_row">
+            <% if(data.dataset.length == 0){ %> There are no posts to show 
+            <% } else{ for(let i = 0; i < data.dataset.length; i++){ %>
+            <div class="dataset_column">
+                <div class="dataset_content" style="border-radius: 15px;">
+                    <!-- <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%"> -->
+                    <a href="/dataset/post?uid=<%= data.dataset[i].user_id %>&pid=<%= data.dataset[i].d_id %> "><h3><%= data.dataset[i].title %> </h3></a>
+                    <p><%= data.dataset[i].body.slice(0, 57)%> <a href="/dataset/post?uid=<%= data.dataset[i].user_id %>&pid=<%= data.dataset[i].d_id %> ">...see more </a></p>
+                </div>
+            </div>
+            <% }} %> 
+            <!-- END GRID -->
+        </div>
+
+        <!-- END MAIN -->
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<%- include("../partials-user/header.ejs") %>
+
+    <body class="portfolio_body">
+        <!-- included main navigation bar-->
+        <%- include("../partials-user/navbarMain.ejs") %>
+
+            <%- include("../partials-user/navbarProfile.ejs") %>
+
+
+                <div class="portfolio_main">
+
+                    
+
+                    <a href="/works-add"><input type="submit" value="Create new project"> </a>
+
+                    <div class="portfolio_row">
+                        <% if(data.works.length == 0){ %> You have not published in works <% }else{for(let i = 0; i < data.works.length; i++){ %>
+                        <div class="portfolio_column">
+                            
+                            <div class="portfolio_content">
+                                <!-- <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%"> -->
+                                <a href="/works-details?pid=<%= data.works[i].p_id %> "><h3><%= data.works[i].title %></h3></a>
+                                <p><%= data.works[i].body.slice(0, 157) %></p>
+                            </div>
+                            
+                        </div>
+                        <% }} %> 
+                        <!-- END GRID -->
+                    </div>
+
+                    
+
+                    <!-- END MAIN -->
+                </div>
+
+    </body>
+
+    </html>
